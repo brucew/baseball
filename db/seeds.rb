@@ -1,7 +1,8 @@
 def attrs_from_xml(node, map)
   attrs = {}
   map.each do |attr, xpath|
-    attrs[attr] = node.xpath('./' + xpath).inner_text
+    value = node.xpath('./' + xpath).inner_text
+    attrs[attr] = value
   end
   attrs
 end
@@ -24,7 +25,11 @@ document.xpath('/SEASON').each do |season_node|
         team = Team.create(attrs.merge(division: division))
 
         team_node.xpath('./PLAYER').each do |player_node|
-          attrs = attrs_from_xml(player_node, surname: 'SURNAME', given_name: 'GIVEN_NAME', position: 'POSITION')
+          attrs = attrs_from_xml(player_node,
+                                 surname: 'SURNAME', given_name: 'GIVEN_NAME', position: 'POSITION',
+                                 hr: 'HOME_RUNS', rbi: 'RBI', runs: 'RUNS', sb: 'STEALS',
+                                 hits: 'HITS', at_bats: 'AT_BATS', base_on_balls: 'WALKS', hit_by_pitch: 'HIT_BY_PITCH',
+                                 sacrifice_flies: 'SACRIFICE_FLIES', doubles: 'DOUBLES', triples: 'TRIPLES')
           Player.create(attrs.merge(team: team))
         end
 

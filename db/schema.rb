@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131013170955) do
+ActiveRecord::Schema.define(version: 20131014034338) do
 
   create_table "divisions", force: true do |t|
     t.integer "league_id"
@@ -32,12 +32,19 @@ ActiveRecord::Schema.define(version: 20131013170955) do
     t.string  "surname"
     t.string  "given_name"
     t.string  "position"
-    t.integer "avg"
-    t.integer "hr"
-    t.integer "rbi"
-    t.integer "runs"
-    t.integer "sb"
-    t.integer "ops"
+    t.float   "avg",             default: 0.0, null: false
+    t.integer "hr",              default: 0,   null: false
+    t.integer "rbi",             default: 0,   null: false
+    t.integer "runs",            default: 0,   null: false
+    t.integer "sb",              default: 0,   null: false
+    t.float   "ops",             default: 0.0, null: false
+    t.integer "hits",            default: 0,   null: false
+    t.integer "doubles",         default: 0,   null: false
+    t.integer "triples",         default: 0,   null: false
+    t.integer "at_bats",         default: 0,   null: false
+    t.integer "base_on_balls",   default: 0,   null: false
+    t.integer "hit_by_pitch",    default: 0,   null: false
+    t.integer "sacrifice_flies", default: 0,   null: false
   end
 
   add_index "players", ["team_id"], name: "index_players_on_team_id"
