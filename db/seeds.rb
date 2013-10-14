@@ -1,8 +1,8 @@
 def attrs_from_xml(node, map)
   attrs = {}
   map.each do |attr, xpath|
-    value = node.xpath('./' + xpath).inner_text
-    attrs[attr] = value
+    value = node.at_xpath('./' + xpath)
+    attrs[attr] = value.inner_text if value
   end
   attrs
 end
