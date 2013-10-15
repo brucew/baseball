@@ -10,7 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'nokogiri'
 gem 'bootstrap-sass'
-gem 'kaminari'
+#gem 'kaminari'
 
 group :development do
   gem 'puma'

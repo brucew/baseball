@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
 
   def index
     @o = params[:o] || 'AVG DESC'
-    @season = Season.where(year: 1998).first
+    @season = Season.from_param(params[:season_id])
     @players = @season.players.order(@o).limit(100)
     respond_with(@players)
   end
