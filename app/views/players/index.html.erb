@@ -1,8 +1,9 @@
-<h1><%= @season.year %> Players</h1>
+<h1><%= link_to @season.year + ' Players', season_players_path %></h1>
 <table class="table table-bordered table-hover">
   <th><tr>
     <td> Team </td>
     <td> Name </td>
+    <td> Position </td>
     <td> <%= column_sort_tag 'AVG' %> </td>
     <td> <%= column_sort_tag 'HR' %> </td>
     <td> <%= column_sort_tag 'RBI' %> </td>
@@ -12,3 +13,5 @@
   </tr></th>
   <%= render @players %>
 </table>
+
+<%= paginate @players %>

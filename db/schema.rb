@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20131014034338) do
     t.string "year"
   end
 
+  add_index "seasons", ["year"], name: "index_seasons_on_year"
+
   create_table "teams", force: true do |t|
     t.integer "division_id"
     t.string  "city"

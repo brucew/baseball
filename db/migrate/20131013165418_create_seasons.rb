@@ -3,5 +3,6 @@ class CreateSeasons < ActiveRecord::Migration
     create_table :seasons do |t|
       t.string :year
     end
+    add_index :seasons, :year
   end
 end
