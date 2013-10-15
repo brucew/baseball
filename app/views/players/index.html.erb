@@ -1,17 +1,22 @@
 <h1><%= link_to @season.year + ' Players', season_players_path %></h1>
-<table class="table table-bordered table-hover">
-  <th><tr>
-    <td> Team </td>
-    <td> Name </td>
-    <td> Position </td>
-    <td> <%= column_sort_tag 'AVG' %> </td>
-    <td> <%= column_sort_tag 'HR' %> </td>
-    <td> <%= column_sort_tag 'RBI' %> </td>
-    <td> <%= column_sort_tag 'RUNS' %> </td>
-    <td> <%= column_sort_tag 'SB' %> </td>
-    <td> <%= column_sort_tag 'OPS' %> </td>
-  </tr></th>
-  <%= render @players %>
-</table>
+<div class="layout_time">Layout random: <strong><%= rand(900)+100 %></strong></div>
+<div data-pjax-container>
 
-<%= paginate @players %>
+  <table class="players table table-bordered table-hover">
+    <tr>
+      <th> Team </th>
+      <th> Name </th>
+      <th> Position </th>
+      <th> <%= column_sort_tag 'AVG' %> </th>
+      <th> <%= column_sort_tag 'HR' %> </th>
+      <th> <%= column_sort_tag 'RBI' %> </th>
+      <th> <%= column_sort_tag 'RUNS' %> </th>
+      <th> <%= column_sort_tag 'SB' %> </th>
+      <th> <%= column_sort_tag 'OPS' %> </th>
+    </tr>
+    <%= render @players %>
+  </table>
+
+  <%= paginate @players %>
+
+</div>
