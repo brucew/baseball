@@ -28,25 +28,29 @@ ActiveRecord::Schema.define(version: 20131014034338) do
   add_index "leagues", ["season_id"], name: "index_leagues_on_season_id"
 
   create_table "players", force: true do |t|
+    t.integer "season_id"
+    t.integer "league_id"
+    t.integer "division_id"
     t.integer "team_id"
     t.string  "surname"
     t.string  "given_name"
     t.string  "position"
-    t.float   "avg",             default: 0.0, null: false
-    t.integer "hr",              default: 0,   null: false
-    t.integer "rbi",             default: 0,   null: false
-    t.integer "runs",            default: 0,   null: false
-    t.integer "sb",              default: 0,   null: false
-    t.float   "ops",             default: 0.0, null: false
-    t.integer "hits",            default: 0,   null: false
-    t.integer "doubles",         default: 0,   null: false
-    t.integer "triples",         default: 0,   null: false
-    t.integer "at_bats",         default: 0,   null: false
-    t.integer "base_on_balls",   default: 0,   null: false
-    t.integer "hit_by_pitch",    default: 0,   null: false
-    t.integer "sacrifice_flies", default: 0,   null: false
+    t.float   "avg",             default: 0.0
+    t.integer "hr",              default: 0
+    t.integer "rbi",             default: 0
+    t.integer "runs",            default: 0
+    t.integer "sb",              default: 0
+    t.float   "ops",             default: 0.0
+    t.integer "hits",            default: 0
+    t.integer "doubles",         default: 0
+    t.integer "triples",         default: 0
+    t.integer "at_bats",         default: 0
+    t.integer "base_on_balls",   default: 0
+    t.integer "hit_by_pitch",    default: 0
+    t.integer "sacrifice_flies", default: 0
   end
 
+  add_index "players", ["season_id"], name: "index_players_on_season_id"
   add_index "players", ["team_id"], name: "index_players_on_team_id"
 
   create_table "seasons", force: true do |t|

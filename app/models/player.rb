@@ -1,11 +1,14 @@
 class Player < ActiveRecord::Base
+  belongs_to :season
+  belongs_to :league
+  belongs_to :division
   belongs_to :team
 
-  before_validation :calculate_avg, :calculate_ops, if: :is_a_hitter?
+  before_save :calculate_avg, :calculate_ops
 
-  validates :surname, presence: true
-  validates :given_name, presence: true
-  validates :position, presence: true
+  validates :season, :league, :division, :team, presence: true
+  validates :surname, :given_name, :position, presence: true
+  validates :at_bats, :numericality => { greater_than: 0 }
 
   def singles
     self.hits - (self.doubles + self.triples + self.hr)
@@ -16,24 +19,18 @@ class Player < ActiveRecord::Base
   end
 
   def slugging_average
-    self.is_a_hitter? ? self.total_bases.to_f / self.at_bats : 0
+    self.total_bases.to_f / self.at_bats
   end
 
   def on_base_percentage
-    self.is_a_hitter? ?
-        (self.hits + self.base_on_balls + self.hit_by_pitch).to_f /
-            (self.at_bats + self.base_on_balls + self.sacrifice_flies + self.hit_by_pitch)
-    : 0
-  end
-
-  def is_a_hitter?
-    self.at_bats > 0
+    (self.hits + self.base_on_balls + self.hit_by_pitch).to_f /
+        (self.at_bats + self.base_on_balls + self.sacrifice_flies + self.hit_by_pitch)
   end
 
   private
 
   def calculate_avg
-    self.is_a_hitter? ? self.avg = self.hits.to_f / self.at_bats : 0
+    self.avg = self.hits.to_f / self.at_bats
   end
 
   def calculate_ops
