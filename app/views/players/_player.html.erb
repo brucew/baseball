@@ -1,0 +1,10 @@
+<%= content_tag_for :tr, player do %>
+    <td> <%= player.team.city %> <%= player.team.name %> </td>
+    <td> <%= player.given_name %> <%= player.surname %> </td>
+    <td> <%= player.avg.round(3) %> </td>
+    <td> <%= player.hr %> </td>
+    <td> <%= player.rbi %> </td>
+    <td> <%= player.runs %> </td>
+    <td> <%= player.sb %> </td>
+    <td> <%= player.ops.round(3) %> </td>
+<% end %>

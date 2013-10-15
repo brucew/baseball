@@ -1,8 +1,8 @@
 class Player < ActiveRecord::Base
-  belongs_to :season
+  belongs_to :season, inverse_of: :players
   belongs_to :league
   belongs_to :division
-  belongs_to :team
+  belongs_to :team, inverse_of: :players
 
   before_save :calculate_avg, :calculate_ops
 

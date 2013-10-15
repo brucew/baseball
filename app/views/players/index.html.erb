@@ -1,0 +1,14 @@
+<h1><%= @season.year %> Players</h1>
+<table class="table table-bordered table-hover">
+  <th><tr>
+    <td> Team </td>
+    <td> Name </td>
+    <td> AVG </td>
+    <td> HR </td>
+    <td> RBI </td>
+    <td> RUNS </td>
+    <td> SB </td>
+    <td> OPS </td>
+  </tr></th>
+  <%= render @players %>
+</table>
