@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'nokogiri'
 gem 'bootstrap-sass'
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 gem 'rack-pjax'
 
 group :development do

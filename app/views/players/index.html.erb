@@ -1,8 +1,7 @@
 <h1><%= link_to @season.year + ' Players', season_players_path %></h1>
-<div class="layout_time">Layout random: <strong><%= rand(900)+100 %></strong></div>
-<div data-pjax-container>
 
-  <table class="players table table-bordered table-hover">
+<div data-pjax-container>
+  <table class="players table table-striped table-bordered table-hover">
     <tr>
       <th> Team </th>
       <th> Name </th>
