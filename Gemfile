@@ -15,6 +15,15 @@ gem 'rack-pjax'
 
 group :development do
   gem 'puma'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'simplecov', :require => false
 end
 
 group :doc do
